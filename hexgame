@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 'use strict'
 
+const readline = require('readline')
 const bits = 8
 const nibbles = bits / 4
 const mask = Math.pow(2, bits) - 1
@@ -54,10 +55,18 @@ const printProblem = function () {
   const operands = [a, b].slice(0, operation.length)
   const problem = bitwiseFunctionAsString[operationName].apply(this, operands)
   const answer = operation.apply(this, operands)
-  const solution = `${problem} = ${hexToString(answer)}`
 
-  print(`${problem} = ?`)
-  print(solution)
+  const rl = readline.createInterface({ input: process.stdin, output: process.stdout })
+  rl.question(`${problem} = `, (response) => {
+    if (parseInt(response, 16) === answer) {
+      print('✓ Correct!')
+    } else {
+      print('✗ Incorrect')
+      print(`${problem} = ${hexToString(answer)}`)
+    }
+
+    rl.close()
+  })
 }
 
 printProblem()
