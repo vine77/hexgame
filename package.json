@@ -1,0 +1,21 @@
+{
+  "name": "hexgame",
+  "version": "0.0.1",
+  "description": "",
+  "main": "hexgame",
+  "devDependencies": {
+    "snazzy": "^3.0.0",
+    "standard": "^6.0.8"
+  },
+  "engines": {
+    "node": ">=4.0.0"
+  },
+  "scripts": {
+    "start": "node hexgame",
+    "test": "standard --verbose hexgame | snazzy"
+  },
+  "author": "Nathan Ward",
+  "license": "MIT",
+  "preferGlobal": true,
+  "bin": "./hexgame"
+}
